@@ -17,7 +17,7 @@ export interface AxiosRequestOptions extends AxiosRequestConfig {
 const createAxios = <T extends AxiosInstance>(instance: T): T => {
   instance.interceptors.request.use(
     (options: AxiosRequestOptions): AxiosRequestOptions => {
-      let { url, extension, cache } = options;
+      let { url, extension, cache }: any = options;
       const { defaults } = axios;
 
       if (extension === undefined) {

@@ -13,7 +13,7 @@ export const isString = (obj: any): boolean => typeof obj === 'string';
  * @param {object} data 请求参数
  * @returns {string}
  */
-export const formatURL = (url: string, data: object): string => {
+export const formatURL = (url: string, data: object = {}): string => {
   let newUrl = '';
 
   // 匹配动态参数

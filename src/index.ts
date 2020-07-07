@@ -1,19 +1,17 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
-import axios, { AxiosRequestOptions, Method, AxiosPromise } from './axios';
+import axios, { AxiosRequestOptions, AxiosPromise } from './axios';
 import {
   isObject, isObjectLike, formatURL,
 } from './util';
 
 export * from './axios';
 
-export type AxiosServices<T> = {
-  [K in keyof T]: (data?: any, options?: AxiosRequestOptions) => AxiosPromise;
-};
-
 export type AxiosRequestData = {
   [key: string]: any;
 } | null;
+
+export type AxiosServices<T> = {
+  [K in keyof T]: (data?: AxiosRequestData, options?: AxiosRequestOptions) => AxiosPromise;
+};
 
 const methods = {};
 const mocks = {};
@@ -53,7 +51,7 @@ export const axiosConfig = (options: AxiosRequestOptions): AxiosRequestOptions =
  * @function 创建mock数据
  * @param {object} mock mock数据
  */
-export const createMock = (mockData: object): void => {
+export const createMock = (mockData: any): void => {
   if (isObjectLike(mockData)) {
     Object.keys(mockData).forEach((key) => {
       mocks[key] = mockData[key];
@@ -75,19 +73,9 @@ export const createMethod = (
     options?: AxiosRequestOptions,
     ...rest: any[]
   ) => AxiosPromise,
-  force?: boolean,
-): Function => {
+): void => {
   const method = name.toUpperCase();
-
-  if (process.env.NODE_ENV !== 'production' && !force && !!methods[method]) {
-    throw new Error(
-      `方法“${method}”已存在，替换该方法可能会影响程序的正常运行，若没有风险，请将force参数设置为true！`,
-    );
-  }
-
-  // eslint-disable-next-line no-multi-assign
-  const cb = (methods[method] = callback);
-  return cb;
+  methods[method] = callback;
 };
 
 /**
@@ -155,7 +143,7 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 
-['GET', 'DELETE', 'HEAD', 'OPTIONS'].forEach((method: Method) => {
+['GET', 'DELETE', 'HEAD', 'OPTIONS'].forEach((method: any) => {
   createMethod(method, (url, data, options = {}) => axios({
     url,
     method,
@@ -164,7 +152,7 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 });
 
-['POST', 'PUT', 'PATCH'].forEach((method: Method) => {
+['POST', 'PUT', 'PATCH'].forEach((method: any) => {
   createMethod(method, (url, data, options = {}) => axios({
     url,
     method,

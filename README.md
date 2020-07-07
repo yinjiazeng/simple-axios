@@ -14,9 +14,9 @@ npm i --save simple-axios
 ```
 ### 使用
 ```js
-import { create } from 'simple-axios';
+import { createServices } from 'simple-axios';
 
-const services = create({
+const services = createServices({
   getList: 'GET /path/getList',
   save: 'POST /path/save',
 }, {
@@ -96,7 +96,7 @@ createMethod('METHOD', (url, data, options) => {
   });
 });
 
-const services = createRequests({
+const services = createServices({
   save: 'METHOD /path',
 });
 

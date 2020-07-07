@@ -16,16 +16,16 @@
     }
   }
   </script>
-  <script src="../dist/request.min.js"></script>
+  <script src="../dist/simple-axios.min.js"></script>
   <script>
-    Request.axiosConfig({
+    simpleAxios.axiosConfig({
       extension: '.do',
       cache: false,
       delay: 2000,
       baseURL: 'https://www.fastmock.site/mock/f4cfe9645413ed92b9e90cb83eff4ec6/',
     });
 
-    Request.createMock({
+    simpleAxios.createMock({
       getData: (data, opts) => {
         if(data.username === 'xxx'){
           return Mock.mock({
@@ -45,7 +45,7 @@
       }
     });
 
-    var services = Request.createServices({
+    var services = simpleAxios.createServices({
       getData: 'POST /getjson/:username',
     });
 
