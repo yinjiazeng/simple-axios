@@ -7,7 +7,7 @@ export type AxiosRequestData = {
   [key: string]: any;
 } | null;
 
-export type AxiosServices<T> = {
+export type AxiosService<T> = {
   [K in keyof T]: (data?: AxiosRequestData, options?: AxiosRequestOptions) => AxiosPromise;
 };
 
@@ -77,13 +77,13 @@ export const createMethod = (
 };
 
 /**
- * @function 创建services
+ * @function 创建service
  * @param {object} api 请求api对象
  * @param {any} mockData mock数据
  * @returns {object}
  */
-export const createServices = <T>(api: T, mockData?: any): AxiosServices<T> => {
-  const result = {} as AxiosServices<T>;
+export const createService = <T>(api: T, mockData?: any): AxiosService<T> => {
+  const result = {} as AxiosService<T>;
 
   if (isObjectLike(api)) {
     const names = Object.keys(api);

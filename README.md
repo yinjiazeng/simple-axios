@@ -14,9 +14,9 @@ npm i --save simple-axios
 ```
 ### 使用
 ```js
-import { createServices } from 'simple-axios';
+import { createService } from 'simple-axios';
 
-const services = createServices({
+const service = createService({
   getList: 'GET /path/getList',
   save: 'POST /path/save',
 }, {
@@ -38,24 +38,24 @@ const services = createServices({
   },
 });
 
-services.getList().then(({ data }) => {
+service.getList().then(({ data }) => {
   console.log(data.data); // [{ id: '1' }, { id: '2' }]
 });
 
-services.save({ content: '' }).then(({ data }) => {
+service.save({ content: '' }).then(({ data }) => {
   console.log(data.message); // error
 });
 ```
 
 ## API速查
 
-### createServices
+### createService
 ```js
-createServices(api: object, mockData?: object);
+createService(api: object, mockData?: object);
 ```
 api参数是请求url以及别名的键值对，url以“大写方法名”开头，和请求地址之间空格隔开，默认包含“GET、POST、PUT、DELETE、HEAD、OPTIONS、PATCH”方法，请求地址可以包含动态参数，用“/:x”表示。
 ```js
-const services = createServices({
+const service = createService({
   getList: 'GET /path',
   save: 'POST /path',
   delete: 'DELETE /path',
@@ -64,12 +64,12 @@ const services = createServices({
 ```
 返回值是一个对象，“对象.别名(data?: object, options?: object)”方法可以调用对应的请求，data参数就是需要传递给接口的参数，options参数是axios的配置项，方法返回promise。
 ```js
-services.getList().then(...);
-services.save({ name: 'xxx' }).then(...);
+service.getList().then(...);
+service.save({ name: 'xxx' }).then(...);
 ```
 mockData参数为可选的，是别名和mock对象的键值对，可以在开发环境本地模拟接口数据，生产环境该功能会被禁用，为了防止模拟数据被打包到代码里，最好用process.env.NODE_ENV判断，推荐 [mockjs](http://mockjs.com/) 来进行数据模拟。
 ```js
-createServices({
+createService({
   getList: '/path',
   save: 'POST /path',
 }, process.env.NODE_ENV !== 'production' ? {
@@ -96,11 +96,11 @@ createMethod('METHOD', (url, data, options) => {
   });
 });
 
-const services = createServices({
+const service = createService({
   save: 'METHOD /path',
 });
 
-services.save().then(...);
+service.save().then(...);
 ```
 通过该方式也可以创建jsonp的请求，这里需要适用第三方包 [axios-jsonp](https://github.com/AdonisLau/axios-jsonp)。
 ```js
@@ -120,7 +120,7 @@ createMethod('JSONP', (url, data, options) => {
 ```js
 createMock(mockData: object);
 ```
-全局配置mock，优先级低于通过createServices方法配置的。
+全局配置mock，优先级低于通过createService方法配置的。
 ```js
 if (process.env.NODE_ENV !== 'production') {
   createMock({

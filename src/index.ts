@@ -3,7 +3,7 @@ import {
   axiosConfig,
   createMethod,
   createMock,
-  createServices,
+  createService,
 } from './create';
 
 export * from './axios';
@@ -14,7 +14,7 @@ export {
   axiosConfig,
   createMethod,
   createMock,
-  createServices,
+  createService,
 };
 
 export default axios;

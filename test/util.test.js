@@ -1,4 +1,4 @@
-import { formatURL, combineURL } from '../lib/util';
+const { formatURL, combineURL } = require('../lib/util');
 
 test('format', () => {
   expect(formatURL('/api/:id', { id: 1 })).toBe('/api/1');

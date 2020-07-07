@@ -45,11 +45,11 @@
       }
     });
 
-    var services = simpleAxios.createServices({
+    var service = simpleAxios.createService({
       getData: 'POST /getjson/:username',
     });
 
-    services.getData({ username:'xxx' }, { data: { a: 1 }, delay: 300 }).then((res) => {
+    service.getData({ username:'xxx' }, { data: { a: 1 }, delay: 300 }).then((res) => {
       console.log(res)
     });
   </script>
