@@ -83,9 +83,9 @@ createServices({
 
 ### createMethod
 ```js
-createMethod(name: string, callback: Funtion, force?: boolean);
+createMethod(name: string, callback: Funtion);
 ```
-当默认7个方法不满足需求时，用于自定义方法配置，name参数是方法名，callback是一个回调，返回axios调用结果，当方法名重复时，浏览器控制台会有警告。
+当默认7个方法不满足需求时，用于自定义方法配置，name参数是方法名，callback是一个回调，返回axios调用结果。
 ```js
 createMethod('METHOD', (url, data, options) => {
   return axios({

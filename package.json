@@ -1,7 +1,7 @@
 {
   "name": "simple-axios",
   "description": "基于axios封装的请求库，可以对接口进行集中式管理，方便接口的使用和维护，配合mock功能在开发阶段便于程序的测试。",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
