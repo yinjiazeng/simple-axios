@@ -5,6 +5,8 @@ import {
 
 export * from './axios';
 
+export default axios;
+
 export type AxiosRequestData = {
   [key: string]: any;
 } | null;
