@@ -35,8 +35,10 @@ const createAxios = <T extends AxiosInstance>(instance: T): T => {
   return instance;
 };
 
+const { create } = axios;
+
 axios.create = (options: AxiosRequestOptions): AxiosInstance => {
-  const instance = axios.create(options);
+  const instance = create(options);
   return createAxios(instance);
 };
 
