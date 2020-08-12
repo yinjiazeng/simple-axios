@@ -1,20 +1,20 @@
 ## 介绍
-基于 [axios](https://github.com/axios/axios) 封装的请求库，可以对接口进行集中式管理，方便接口的使用和维护，配合 `mock` 功能在开发阶段便于程序的测试。
+基于 [axios](https://github.com/axios/axios) 封装的请求库，可以对接口进行集中式管理，方便接口的使用和维护。
 
 ## 快速上手
 
 ### 安装
 #### yarn
 ```
-yarn add simple-axios
+yarn add happy-axios
 ```
 #### npm
 ```
-npm i --save simple-axios
+npm i --save happy-axios
 ```
 ### 使用
 ```js
-import { createService } from 'simple-axios';
+import { createService } from 'happy-axios';
 
 const service = createService({
   getList: 'GET /path/getList',

@@ -10,9 +10,9 @@ const config = {
   input: 'src/index.ts',
   external: ['axios'],
   output: {
-    file: `dist/simple-axios${PROD ? '.min' : ''}.js`,
+    file: `dist/happy-axios${PROD ? '.min' : ''}.js`,
     format: 'umd',
-    name: 'simpleAxios',
+    name: 'happyAxios',
     sourcemap: true,
     globals: {
       axios: 'axios',

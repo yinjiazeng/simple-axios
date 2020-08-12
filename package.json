@@ -1,12 +1,12 @@
 {
-  "name": "simple-axios",
-  "description": "基于axios封装的请求库，可以对接口进行集中式管理，方便接口的使用和维护，配合mock功能在开发阶段便于程序的测试。",
-  "version": "1.1.0",
+  "name": "happy-axios",
+  "description": "基于axios封装的请求库，可以对接口进行集中式管理，方便接口的使用和维护。",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yinjiazeng/simple-axios.git"
+    "url": "git+https://github.com/yinjiazeng/happy-axios.git"
   },
   "keywords": [
     "service",
@@ -65,9 +65,9 @@
     "test": "jest"
   },
   "bugs": {
-    "url": "https://github.com/yinjiazeng/simple-axios/issues"
+    "url": "https://github.com/yinjiazeng/happy-axios/issues"
   },
-  "homepage": "https://github.com/yinjiazeng/simple-axios#readme",
+  "homepage": "https://github.com/yinjiazeng/happy-axios#readme",
   "directories": {
     "example": "examples",
     "lib": "lib",
